@@ -46,8 +46,8 @@ export default function Footer() : JSX.Element {
                     <ul className="flex flex-wrap items-center gap-4 mt-6 sm:text-sm sm:mt-0">
                         {
                             footerNavs.map((item) => (
-                                <li className="text-gray-800 hover:text-gray-500 duration-150 text-center">
-                                    <a key={item.id} href={item.href}>
+                                <li key={item.id} className="text-gray-800 hover:text-gray-500 duration-150 text-center">
+                                    <a href={item.href}>
                                         {item.name}
                                     </a>
                                 </li>
