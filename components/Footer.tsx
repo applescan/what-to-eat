@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Logo from "../public/logo.png"
 
-export default () => {
+export default function Footer() : JSX.Element {
 
     interface NavigationItem {
         href: string;
@@ -42,7 +42,7 @@ export default () => {
                         {
                             footerNavs.map((item, idx) => (
                                 <li className="text-gray-800 hover:text-gray-500 duration-150 text-center">
-                                    <a key={idx} href={item.href}>
+                                    <a key={String(idx)} href={item.href}>
                                         {item.name}
                                     </a>
                                 </li>

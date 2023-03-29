@@ -1,4 +1,4 @@
-export default () => {
+export default function Diets(): JSX.Element {
 
     interface FeaturesList {
         icon: any,

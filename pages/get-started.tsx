@@ -1,3 +1,6 @@
+import Image from "next/image"
+import Logo from "@/public/logo.png"
+
 const people = [
     {
       name: 'Calvin Hawkins',
@@ -24,7 +27,12 @@ const people = [
       <ul className="divide-y divide-gray-200 font-poppins">
         {people.map((person) => (
           <li key={person.email} className="py-4 flex">
-            <img className="h-10 w-10 rounded-full" src={person.image} alt="" />
+            <Image
+              src={Logo}
+              width={120}
+              height={50}
+              alt="Float UI logo"
+            />
             <div className="ml-3">
               <p className="text-sm font-bold text-gray-900">{person.name}</p>
               <p className="text-sm text-gray-500">{person.email}</p>

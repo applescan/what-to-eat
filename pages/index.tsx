@@ -3,14 +3,14 @@ import HeroBanner from "@/components/Home/HeroBanner";
 import Footer from "@/components/Footer";
 import Diets from "@/components/Home/Diets";
 
-export default () => {
+export default function Index(): JSX.Element {
 
   return (
     <>
-    <Header></Header>
-    <HeroBanner></HeroBanner>
-    <Diets></Diets>
-    <Footer></Footer>
+      <Header></Header>
+      <HeroBanner></HeroBanner>
+      <Diets></Diets>
+      <Footer></Footer>
     </>
   )
 }
