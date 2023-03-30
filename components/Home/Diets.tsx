@@ -35,7 +35,7 @@ export default function Diets(): JSX.Element {
     ]
 
     return (
-        < section className="py-16" >
+        < section className="pb-16 pt-8" >
             <div className="max-w-screen-xl mx-auto px-10 md:px-8">
                 <div className="max-w-md">
                     <h1 className="text-gray-700 text-xl font-extrabold sm:text-2xl">Easy Steps</h1>
