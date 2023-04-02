@@ -8,12 +8,12 @@ export default function HeroBanner() {
                 <div className="relative z-10 max-w-screen-xl mx-auto px-10 py-28 md:px-8">
                     <div className="space-y-5 max-w-4xl mx-auto text-center">
                         <h2 className="text-4xl text-gray-700 font-extrabold mx-auto md:text-5xl">
-                            <span className="text-indigo-600 text-6xl"> What to eat? </span>
-                            <br></br>Find Your Next Meal with us
+                            <span className="text-transparent text-6xl bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#14b8a6]"> What to eat? </span>
+                            <br></br>Find Your Next Meal with Us
                         </h2>
                         <br></br>
                         <p className="max-w-2xl mx-auto text-gray-800 font-semibold">
-                            Get Creative in the Kitchen with What to Eat Recipe Wizard
+                            Get Creative in the Kitchen our Recipe Wizard
                         </p>
                         <br></br>
                         <form

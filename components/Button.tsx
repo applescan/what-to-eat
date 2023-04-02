@@ -1,23 +1,28 @@
-import React, { FormEvent, memo } from 'react'
+import React, { MouseEventHandler } from 'react';
 
-interface IButtonPropList {
-    label: string
-    type: 'button' | 'submit' | 'reset'
-    click: (e: FormEvent<HTMLInputElement>) => void
-    disabled: boolean
+interface ButtonProps {
+    name: string;
+    onClick?: MouseEventHandler<HTMLButtonElement>;
+    isTeal?: boolean; // Add a new prop for specifying whether the button should be teal or not
+    type?: 'button' | 'submit' | 'reset' | undefined;
 }
 
-const Button = ({ label, click, type, disabled }: IButtonPropList) => {
+const Button: React.FC<ButtonProps> = ({ name, onClick, isTeal, type }) => {
+    const bgColorClass = isTeal ? "bg-teal-500" : "bg-indigo-600";
+    const hoverBgColorClass = isTeal ? "hover:bg-teal-400" : "hover:bg-indigo-400";
+
     return (
-        <input
+        <button
+            className={`px-4 py-2 text-white rounded-lg duration-150 active:shadow-lg ${bgColorClass} ${hoverBgColorClass}`}
+            onClick={onClick}
+            role="button"
+            tabIndex={0}
             type={type}
-            value={label}
-            onClick={click}
-            disabled={disabled}
-        />
-    )
-}
+        >
+            {name}
+        </button>
+    );
+};
 
-const MemoButton = memo(Button)
+export default Button;
 
-export { MemoButton as Button }
