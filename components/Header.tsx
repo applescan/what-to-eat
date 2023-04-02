@@ -29,14 +29,14 @@ export default function Header() {
     <nav className={`bg-white md:text-sm ${state ? "rounded-xl pb-5 mx-2 mt-2 md:shadow-none md:border-none md:mx-2 md:mt-0" : ""}`}>
       <div className="gap-x-14 items-center max-w-screen-xl mx-auto px-4 md:flex md:px-8">
         <div className="flex items-center justify-between py-5 md:block">
-          <a href="/">
+          <Link href="/">
             <Image
               src={Logo}
               width={120}
               height={50}
               alt="What to eat logo"
             />
-          </a>
+          </Link>
           <div className="md:hidden">
             <button className="menu-btn text-gray-500 hover:text-gray-800"
               onClick={() => setState(!state)}

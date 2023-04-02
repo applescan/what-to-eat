@@ -20,7 +20,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ title, img, href }) => {
                     <div className="my-16">
                         <h1 className="font-bold text-center text-xl text-gray-900  px-6 pt-10">{title}</h1>
                         <div className="px-6 py-10">
-                            <a href={href} className="text-gray-200 block rounded-lg text-center font-medium leading-6 px-6 py-3 bg-gray-900 hover:bg-black hover:text-white">Let's Cook</a>
+                            <a href={href} className="text-gray-200 block rounded-lg text-center font-medium leading-6 px-6 py-3 bg-gray-900 hover:bg-black hover:text-white">Lets Cook</a>
                         </div>
                     </div>
                 </div>
