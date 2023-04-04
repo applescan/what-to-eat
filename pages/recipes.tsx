@@ -56,8 +56,8 @@ export default function Recipes() {
             );
 
 
-            // Handle unauthorized access error (401)
-            if (res.status === 401) {
+            // Handle unauthorized access error (402)
+            if (res.status === 402) {
                 setSnackbarOpen(true);
                 setError("Daily quota reached. Please try again tomorrow!")
                 return;
