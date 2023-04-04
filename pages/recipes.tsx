@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import RecipeCard from '@/components/Form/Cards/RecipeCard';
 import Axios from "axios";
-
+import Snackbar from '@/components/Snackbar';
+import Link from 'next/link';
 
 type FormData = {
     dietary: string;
@@ -24,6 +25,9 @@ export default function Recipes() {
         ingredients: "",
         pantry: ""
     });
+
+    const [snackbarOpen, setSnackbarOpen] = useState(false)
+    const [error, setError] = useState("")
 
     useEffect(() => {
         // Retrieve form data from local storage
@@ -51,6 +55,14 @@ export default function Recipes() {
                 `https://api.spoonacular.com/recipes/complexSearch?query=${formValues.ingredients}&cuisine=${formValues.dietary}&diet=${formValues.pantry}&apiKey=${process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY}`
             );
 
+
+            // Handle unauthorized access error (401)
+            if (res.status === 401) {
+                setSnackbarOpen(true);
+                setError("Daily quota reached. Please try again tomorrow!")
+                return;
+            }
+
             // Extract recipe data from response
             const recipes = res.data.results.map((recipe: any) => ({
                 id: recipe.id,
@@ -62,7 +74,11 @@ export default function Recipes() {
             // Set recipe data in state
             setRecipes(recipes);
 
-            //console.log(diet)
+            // Show Snackbar if no recipes found
+            if (recipes.length === 0) {
+                setSnackbarOpen(true);
+                setError("No recipes found. Maybe try a different ingredients? 💭")
+            }
         };
 
         fetchRecipes();
@@ -71,27 +87,30 @@ export default function Recipes() {
 
 
     return (
-        <section className="py-14">
-            <div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
+        <section className="py-14 bg-[url('../public/background-3.png')] bg-contain bg-no-repeat">
+            <div className="max-w-screen-xl mx-auto px-4  text-gray-600 md:px-8">
                 <div className="relative max-w-2xl mx-auto sm:text-center">
-                    <div className="relative z-10">
-                        <h3 className="text-gray-800 text-3xl font-semibold sm:text-4xl">
-                            Let’s help power your SaaS
-                        </h3>
-                        <p className="mt-3">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec congue, nisl eget molestie varius, enim ex faucibus purus.
-                        </p>
+                    <div className="space-y-5 max-w-4xl mx-auto text-center">
+                        <h2 className="text-4xl text-gray-700 font-extrabold mx-auto pb-14 md:text-5xl">
+                            Here is delicious recipes suggestion based on your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#14b8a6]" >dietary preferences</span>
+                        </h2>
+
                     </div>
                     <div className="absolute inset-0 max-w-xs mx-auto h-44 blur-[118px]" style={{ background: "linear-gradient(152.92deg, rgba(192, 132, 252, 0.2) 4.54%, rgba(232, 121, 249, 0.26) 34.2%, rgba(192, 132, 252, 0.1) 77.55%)" }}></div>
                 </div>
                 {diet && (
-                    <>
-                        <h1>Dietary: {diet.dietary}</h1>
-                        <h1>Ingredients: {diet.ingredients}</h1>
-                    </>
+                    <div className='py-10 text-center flex justify-center'>
+                        <p className="px-2 py-1 font-bold text-lg">Dietary:</p> <p className="px-2 py-1 text-lg font-bold rounded text-white bg-indigo-400">{diet.dietary}</p>
+                        <p className="px-2 py-1 font-bold text-lg">Ingredients:</p> <p className="px-2 py-1 text-lg font-bold rounded text-white bg-teal-400">{diet.ingredients}</p>
+                    </div>
                 )}
-                <div className="relative mt-12">
-                    <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <div>
+                    {snackbarOpen && (
+                        <Snackbar message={error} link='/get-started' />
+                    )}
+                </div>
+                <div className="my-12 flex justify-center">
+                    <ul className="grid gap-16 sm:grid-cols-2 lg:grid-cols-3">
                         {recipes.map((recipe) => (
                             <RecipeCard
                                 key={recipe.id}
@@ -102,11 +121,14 @@ export default function Recipes() {
                         ))}
                     </ul>
                 </div>
+                <button className="mx-auto flex justify-center gap-x-2 py-2.5 px-10 w-full text-sm text-white font-medium bg-teal-400 hover:bg-teal-500 active:bg-teal-600 duration-150 rounded-lg sm:mt-0 sm:w-1/4">
+                    <Link href={{ pathname: "/get-started" }}>
+                        Back </Link>
+                </button>
             </div>
         </section>
     )
 }
-
 
 
 

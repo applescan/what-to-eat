@@ -10,26 +10,26 @@ interface RecipeCardProps {
 
 const RecipeCard: React.FC<RecipeCardProps> = ({ title, img, href }) => {
     return (
-        <div className="w-full h-full mx-auto mt-40">
-            <div>
-                <div className="bg-white relative min-w-screen-xl mx-auto mb-10 border-gray-200 rounded-lg shadow ">
-                    <div className="flex justify-center">
-                        <Image src={img} loading="lazy" alt={title} className=" w-4/5 rounded-full mx-auto absolute -top-40 shadow-md transition duration-200 transform hover:scale-110" />
-                    </div>
-
-                    <div className="my-16">
-                        <h1 className="font-bold text-center text-xl text-gray-900  px-6 pt-10">{title}</h1>
-                        <div className="px-6 py-10">
-                            <a href={href} className="text-gray-200 block rounded-lg text-center font-medium leading-6 px-6 py-3 bg-gray-900 hover:bg-black hover:text-white">Lets Cook</a>
-                        </div>
-                    </div>
+        <div className="max-w-xs rounded-md shadow-md bg-indigo-50 ">
+            <div className='flex justify-center rounded-xl'>
+                <Image src={img}
+                    height={800}
+                    width={800}
+                    loading="lazy"
+                    alt={title}
+                    className="object-cover object-center w-ful h-56 border-8 border-indigo-50" />
+            </div>
+            <div className="flex flex-col justify-between p-6 space-y-8">
+                <div className="space-y-2">
+                    <span className="block text-sm pb-2 font-medium tracking-widest uppercase text-indigo-400">Recipe</span>
+                    <h2 className="text-xl font-semibold tracking-wide">{title}</h2>
                 </div>
+                <a href={href} className="text-white block rounded-lg text-center font-medium leading-6 px-6 py-2 bg-gradient-to-r from-[#6366f1] to-[#14b8a6] hover:bg-teal-400 hover:text-white">Lets Cook 🍳</a>
             </div>
         </div>
     );
 }
 
 export default RecipeCard;
-
 
 

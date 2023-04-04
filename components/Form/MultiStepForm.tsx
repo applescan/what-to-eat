@@ -75,7 +75,7 @@ const MultiStepForm = () => {
     };
 
     return (
-        <div className="min-h-full bg-[url('../public/background-2.gif')] bg-cover">
+        <div>
             <Steps steps={["Step 1", "Step 2", "Step 3"]} currentStep={step} />
 
             <div className="max-w-screen-xl mx-auto gap-12 text-gray-600 px-10 pb-28 pt-10 md:px-8">
