@@ -10,6 +10,8 @@ type FormValues = {
     pantry: boolean | null;
 };
 
+
+
 const MultiStepForm = () => {
     const [formValues, setFormValues] = useState<FormValues>({
         dietary: "",
@@ -19,8 +21,9 @@ const MultiStepForm = () => {
 
     //to change the form questions and stepper number
     const [step, setStep] = useState<number>(1);
-
+    const [transitionState, setTransitionState] = useState<boolean>(false);
     const router = useRouter();
+
 
     // validate the form values
     const validateForm = () => {
@@ -42,13 +45,10 @@ const MultiStepForm = () => {
             return;
         }
 
-        //const formDataString = JSON.stringify(formValues);
         console.log(formValues);
         //save users choice in local storage
         localStorage.setItem('formValues', JSON.stringify(formValues));
         router.push('/recipes');
-
-        //alert(formDataString);
 
     };
 
@@ -67,11 +67,19 @@ const MultiStepForm = () => {
     };
 
     const handleNextClick = () => {
-        setStep(step + 1);
+        setTransitionState(true);
+        setTimeout(() => {
+            setStep(step + 1);
+            setTransitionState(false);
+        }, 500);
     };
 
     const handlePrevClick = () => {
-        setStep(step - 1);
+        setTransitionState(true);
+        setTimeout(() => {
+            setStep(step - 1);
+            setTransitionState(false);
+        }, 500);
     };
 
     return (
@@ -88,7 +96,7 @@ const MultiStepForm = () => {
                 </div>
 
                 <form onSubmit={handleFormSubmit} className="pt-28 pb-20">
-                    <div>
+                    <div className={`transition ${transitionState ? 'fade-out' : ''}`}>
                         {step === 1 && (
                             <div className=" font-semibold text-xl mx-auto">
                                 <label>
@@ -120,7 +128,7 @@ const MultiStepForm = () => {
                             </div>
                         )}
                     </div>
-                    <div>
+                    <div className={`transition ${transitionState ? 'fade-out' : ''}`}>
                         {step === 2 && (
                             <div className=" font-semibold text-xl mx-auto">
                                 <label>
@@ -144,9 +152,9 @@ const MultiStepForm = () => {
                             </div>
                         )}
                     </div>
-                    <div>
+                    <div className={`transition ${transitionState ? 'fade-out' : ''}`}>
                         {step === 3 && (
-                            <div className=" font-semibold text-xl mx-auto">
+                            <div className=" font-semibold text-xl mx-auto form-step">
 
                                 <h1> Do you have pantry items to support your cooking? 🥫</h1>
                                 <br></br>

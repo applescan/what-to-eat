@@ -1,6 +1,7 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Axios from "axios";
 import Link from "next/link";
+import Image from 'next/image';
 
 interface RecipeProps {
     title: string;
@@ -84,52 +85,91 @@ export const getStaticProps: GetStaticProps<RecipePageProps, { id: string }> = a
 
 const RecipePage = ({ recipe }: RecipePageProps) => {
     return (
-        <div>
-            <h1>{recipe?.title}</h1>
-            <img src={recipe?.image} alt={recipe?.title} />
-            <p>Servings: {recipe?.servings}</p>
-            <p>Ready in Minutes: {recipe?.readyInMinutes}</p>
-            <p>Aggregate Likes: {recipe?.aggregateLikes}</p>
-            <p>Health Score: {recipe?.healthScore}</p>
-            {recipe?.cuisines?.length > 0 && (
-                <p>Cuisines: {recipe?.cuisines.join(", ")}</p>
-            )}
-            {recipe?.diets?.length > 0 && (
-                <p>Diets: {recipe?.diets.join(", ")}</p>
-            )}
-            {recipe?.extendedIngredients && (
-                <>
-                    <p>Ingredients:</p>
-                    <ul>
-                        {recipe?.extendedIngredients.map((ingredient: any, idx) => (
-                            <li key={idx}>{ingredient.name}: {ingredient.amount} {ingredient.unit}</li>
-                        ))}
-                    </ul>
-                </>
-            )}
-            {recipe?.analyzedInstructions?.length > 0 && (
-                <>
-                    <p>Instructions: 😂🔥</p>
-                    <ol>
-                        {recipe?.analyzedInstructions[0]?.steps.map((step: any, idx) => (
-                            <li key={idx}>{step.step}</li>
-                        ))}
-                    </ol>
-                </>
-            )}
+        <div className="bg-[url('../public/background-4.png')] bg-contain bg-no-repeat">
+            <div className="max-w-2xl py-16 mx-auto space-y-12 px-10 md:px-8">
+                <article className="space-y-8">
+                    <div className="space-y-6">
+                        <h1 className=" text-4xl text-gray-700 font-extrabold mx-auto md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#14b8a6]" >{recipe?.title}</h1>
+                        <div className="flex flex-col items-start justify-between w-full md:flex-row md:items-center">
+                            <div className="block items-center">
+                                <p className="text-base font-semibold">Servings: <span className="text-base font-bold">{recipe?.servings}</span></p>
+                                <p className="text-base font-semibold">Health Score: <span className="text-base font-bold">{recipe?.healthScore}</span> </p>
+                            </div>
+                            <p className="flex-shrink-0 mt-3 text-base font-semibold">Ready in Minutes: <span className="text-base font-bold">{recipe?.readyInMinutes}</span></p>
+                        </div>
+                    </div>
+                    <Image src={recipe?.image}
+                        height={400}
+                        width={1000}
+                        loading="lazy"
+                        alt={recipe?.title}
+                        className="object-cover object-center w-ful rounded-3xl items-center mx-auto" />
+                </article>
+                <div>
 
-            <br></br>
-            <Link href="/recipes">Back to recipes</Link>
 
+                    <div>
+                        {recipe?.diets?.length > 0 && (
+                            <div className="flex flex-wrap py-6 space-x-2">
+                                <p className="text-base font-semibold">Diets:</p>
+                                <ul className="ml-4 space-y-1 list-disc inline">
+                                    {recipe?.diets.map((diet: any, idx) => (
+                                        <li className="px-3 py-1 mx-1 rounded-lg bg-indigo-400 text-white font-semibold text-base inline" key={idx}>{diet}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+                    </div>
+
+                    <div>
+                        {recipe?.cuisines?.length > 0 && (
+                            <div className="flex flex-wrap py-6 space-x-2">
+                                <p className="text-base font-semibold">Cuisines:</p>
+                                <ul className="ml-4 space-y-1 list-disc inline">
+                                    {recipe?.cuisines.map((cuisine: any, idx) => (
+                                        <li className="px-3 py-1 mx-1 rounded-lg bg-teal-400 text-white font-semibold text-base inline" key={idx}>{cuisine}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="border-t border-dashed space-y-2 py-10">
+                        {recipe?.extendedIngredients && (
+                            <>
+                                <h4 className="text-lg font-semibold">Ingredients:</h4>
+                                <ul className="ml-4 space-y-1 list-disc">
+                                    {recipe?.extendedIngredients.map((ingredient: any, idx) => (
+                                        <li key={idx}><span className="text-base font-semibold">{ingredient.name}:</span> <span className="text-base font-bold"> {ingredient.amount} {ingredient.unit}</span></li>
+                                    ))}
+                                </ul>
+                            </>
+                        )}
+                    </div>
+
+                    <div className="border-t border-dashed space-y-2 pt-10">
+                        {recipe?.analyzedInstructions?.length > 0 && (
+                            <>
+                                <h4 className="text-lg font-semibold">Instructions:</h4>
+                                <ul className="ml-4 space-y-1 list-disc">
+                                    {recipe?.analyzedInstructions[0]?.steps.map((step: any, idx) => (
+                                        <li key={idx}>{step.step}</li>
+                                    ))}
+                                </ul>
+                            </>
+                        )}
+                    </div>
+                    <div className='mt-12'>
+                        <button className="mx-auto flex justify-center gap-x-2 py-2 px-10 w-full text-sm text-white font-medium bg-teal-400 hover:bg-teal-500 active:bg-teal-600 duration-150 rounded-lg sm:mt-0 sm:w-1/4">
+                            <Link href={{ pathname: "/recipes" }}>
+                                Back </Link>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
 
-
-
 export default RecipePage;
-
-
-
-
 

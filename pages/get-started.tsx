@@ -8,7 +8,7 @@ export default function Dietary(): JSX.Element {
 
 
   return (
-    <div className="min-h-full bg-[url('../public/background-2.gif')] bg-cover">
+    <div className="min-h-full bg-[url('../public/background-2.gif')] px-10 md:px-8 bg-cover">
      <MultiStepForm></MultiStepForm>
     </div>
   )

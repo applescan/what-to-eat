@@ -56,8 +56,8 @@ export default function Recipes() {
             );
 
 
-            // Handle unauthorized access error (401)
-            if (res.status === 401) {
+            // Handle unauthorized access error (402)
+            if (res.status === 402) {
                 setSnackbarOpen(true);
                 setError("Daily quota reached. Please try again tomorrow!")
                 return;
@@ -87,7 +87,7 @@ export default function Recipes() {
 
 
     return (
-        <section className="py-14 bg-[url('../public/background-3.png')] bg-contain bg-no-repeat">
+        <section className="py-14 px-10 md:px-8 bg-[url('../public/background-3.png')] bg-contain bg-no-repeat">
             <div className="max-w-screen-xl mx-auto px-4  text-gray-600 md:px-8">
                 <div className="relative max-w-2xl mx-auto sm:text-center">
                     <div className="space-y-5 max-w-4xl mx-auto text-center">
@@ -99,9 +99,9 @@ export default function Recipes() {
                     <div className="absolute inset-0 max-w-xs mx-auto h-44 blur-[118px]" style={{ background: "linear-gradient(152.92deg, rgba(192, 132, 252, 0.2) 4.54%, rgba(232, 121, 249, 0.26) 34.2%, rgba(192, 132, 252, 0.1) 77.55%)" }}></div>
                 </div>
                 {diet && (
-                    <div className='py-10 text-center flex justify-center'>
-                        <p className="px-2 py-1 font-bold text-lg">Dietary:</p> <p className="px-2 py-1 text-lg font-bold rounded text-white bg-indigo-400">{diet.dietary}</p>
-                        <p className="px-2 py-1 font-bold text-lg">Ingredients:</p> <p className="px-2 py-1 text-lg font-bold rounded text-white bg-teal-400">{diet.ingredients}</p>
+                    <div className='py-3 text-center lg:flex xs:inline justify-center'>
+                        <p className="px-2 py-1 font-bold text-lg">Dietary:</p> <p className="px-2 py-1 text-lg font-bold rounded text-white bg-indigo-400 inline">{diet.dietary}</p>
+                        <p className="px-2 py-1 font-bold text-lg">Ingredients:</p> <p className="px-2 py-1 text-lg font-bold rounded text-white bg-teal-400 inline">{diet.ingredients}</p>
                     </div>
                 )}
                 <div>
