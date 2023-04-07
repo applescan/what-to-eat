@@ -9,18 +9,21 @@ export default function Footer(): JSX.Element {
         name: string;
         id: number;
     }
-    const footerNavs = [
+    const footerNavs: NavigationItem[]= [
         {
             href: 'https://felicia-portfolio.netlify.app/',
-            name: 'Portfolio'
+            name: 'Portfolio',
+            id: 1
         },
         {
             href: 'https://nz-locum-network.netlify.app/',
-            name: 'NZ Veterinary Locum Network'
+            name: 'NZ Veterinary Locum Network',
+            id: 2
         },
         {
             href: 'https://mixtape-me.herokuapp.com/',
-            name: 'Spotify app integration'
+            name: 'Spotify app integration',
+            id: 3
         }
     ]
     return (
@@ -52,7 +55,7 @@ export default function Footer(): JSX.Element {
                         {
                             footerNavs.map((item, idx) => (
                                 <li className="text-gray-800 hover:text-indigo-500 duration-150">
-                                    <a key={idx} href={item.href}>
+                                    <a key={item.id} href={item.href}>
                                         {item.name}
                                     </a>
                                 </li>
