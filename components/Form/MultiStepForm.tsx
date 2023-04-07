@@ -75,7 +75,7 @@ const MultiStepForm = () => {
         <div>
             <Steps steps={["Step 1", "Step 2", "Step 3"]} currentStep={step} />
 
-            <div className="max-w-screen-xl mx-auto gap-12 text-gray-600 px-10 pb-28 pt-10 md:px-8">
+            <div className="max-w-screen-xl mx-auto gap-12 text-gray-600 px-1 pb-32 pt-10 md:px-1">
 
                 <div className="space-y-5 max-w-4xl mx-auto text-center">
                     <h2 className="text-4xl text-gray-700 font-extrabold mx-auto md:text-5xl">
