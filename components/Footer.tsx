@@ -53,7 +53,7 @@ export default function Footer(): JSX.Element {
                     <p className="flex flex-wrap items-center gap-4 mt-6 text-sm sm:mt-0 font-semibold">© 2023 Felicia Fel. All rights reserved. 😶‍🌫️🥚</p>
                     <ul className="flex flex-wrap items-center gap-4 mt-6 text-xs sm:mt-0">
                         {
-                            footerNavs.map((item, idx) => (
+                            footerNavs.map((item) => (
                                 <li className="text-gray-800 hover:text-indigo-500 duration-150">
                                     <a key={item.id} href={item.href}>
                                         {item.name}
