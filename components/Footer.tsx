@@ -9,7 +9,7 @@ export default function Footer(): JSX.Element {
         name: string;
         id: number;
     }
-    const footerNavs: NavigationItem[]= [
+    const footerNavs: NavigationItem[] = [
         {
             href: 'https://felicia-portfolio.netlify.app/',
             name: 'Portfolio',
@@ -39,7 +39,7 @@ export default function Footer(): JSX.Element {
                         alt="What to eat logo"
                     />
                     <p>
-                    Cook up your perfect dish, with recipes tailored just for you!
+                        Cook up your perfect dish, with recipes tailored just for you!
                     </p>
                     <div className="items-center gap-x-3 space-y-3 sm:flex sm:justify-center sm:space-y-0">
                         <Link
@@ -54,8 +54,8 @@ export default function Footer(): JSX.Element {
                     <ul className="flex flex-wrap items-center gap-4 mt-6 text-xs sm:mt-0">
                         {
                             footerNavs.map((item) => (
-                                <li className="text-gray-800 hover:text-indigo-500 duration-150">
-                                    <a key={item.id} href={item.href}>
+                                <li key={item.id} className="text-gray-800 hover:text-indigo-500 duration-150">
+                                    <a href={item.href}>
                                         {item.name}
                                     </a>
                                 </li>
