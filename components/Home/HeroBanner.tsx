@@ -13,7 +13,7 @@ export default function HeroBanner() {
                         </h2>
                         <br></br>
                         <p className="max-w-2xl mx-auto text-gray-800 font-semibold">
-                            Get Creative in the Kitchen our Recipe Wizard
+                        Personalized recipes for your plate, based on what you have and love to taste!
                         </p>
                         <br></br>
                         <form
