@@ -173,7 +173,7 @@ const RecipePage = ({ recipe }: RecipePageProps) => {
                             </>
                         )}
                     </div>
-                    <div className='mt-12'>
+                    <div className='mt-12 w-1/2'>
                         <Link className="mx-auto flex justify-center gap-x-2 py-2 px-10 w-full text-sm text-white font-medium bg-teal-400 hover:bg-teal-500 active:bg-teal-600 duration-150 rounded-lg sm:mt-0 sm:w-1/4" href={{ pathname: "/recipes" }}>
                             Back </Link>
                     </div>
