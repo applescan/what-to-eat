@@ -28,6 +28,7 @@ export default function Recipes() {
 
     const [snackbarOpen, setSnackbarOpen] = useState(false)
     const [error, setError] = useState("")
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         // Retrieve form data from local storage
@@ -40,11 +41,6 @@ export default function Recipes() {
             }
         }
 
-        if (!formValues) {
-            // Handle case where formData is not found
-            return;
-        }
-
         // Update dietary requirement text
         const dietaryText = formValues.dietary == " " ? "No dietary requirement" : formValues.dietary;
         setDiet({ ...formValues, dietary: dietaryText });
@@ -52,7 +48,7 @@ export default function Recipes() {
         // Make API call to Spoonacular
         const fetchRecipes = async () => {
             const res = await Axios.get(
-                `https://api.spoonacular.com/recipes/complexSearch?query=${formValues.ingredients}&cuisine=${formValues.dietary}&diet=${formValues.pantry}&apiKey=${process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY}`
+                `https://api.spoonacular.com/recipes/complexSearch?query=${formValues.ingredients}&cuisine=${formValues.dietary}&diet=${formValues.pantry}&apiKey=${process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY}&number=9`
             );
 
 
@@ -87,7 +83,7 @@ export default function Recipes() {
 
 
     return (
-        <section className="py-14 px-10 md:px-8 bg-[url('../public/background-3.png')] bg-contain bg-no-repeat">
+        <div className="py-14 px-10 md:px-8 bg-[url('../public/background-3.png')] bg-contain bg-no-repeat">
             <div className="max-w-screen-xl mx-auto px-4  text-gray-600 md:px-8">
                 <div className="relative max-w-2xl mx-auto sm:text-center">
                     <div className="space-y-5 max-w-4xl mx-auto text-center">
@@ -121,12 +117,12 @@ export default function Recipes() {
                         ))}
                     </ul>
                 </div>
-                <button className="mx-auto flex justify-center gap-x-2 py-2.5 px-10 w-full text-sm text-white font-medium bg-teal-400 hover:bg-teal-500 active:bg-teal-600 duration-150 rounded-lg sm:mt-0 sm:w-1/4">
-                    <Link href={{ pathname: "/get-started" }}>
+                <div className='mx-auto flex justify-center w-1/2'>
+                    <Link className="mx-auto flex justify-center gap-x-2 py-2.5 px-10 w-full text-sm text-white font-medium bg-teal-400 hover:bg-teal-500 active:bg-teal-600 duration-150 rounded-lg sm:mt-0 sm:w-1/4" href={{ pathname: "/get-started" }}>
                         Back </Link>
-                </button>
+                </div>
             </div>
-        </section>
+        </div>
     )
 }
 

@@ -2,6 +2,7 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import Axios from "axios";
 import Link from "next/link";
 import Image from 'next/image';
+import Loading from '@/components/Loading';
 
 interface RecipeProps {
     title: string;
@@ -39,7 +40,7 @@ interface RecipePageProps {
 export const getStaticPaths: GetStaticPaths = async () => {
     // Fetch recipe IDs
     const res = await Axios.get(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY}&number=10`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY}&number=9`
     );
 
     const recipeIds = res.data.results.map((recipe: any) => recipe.id);
@@ -59,31 +60,44 @@ export const getStaticProps: GetStaticProps<RecipePageProps, { id: string }> = a
         `https://api.spoonacular.com/recipes/${params!.id}/information?apiKey=${process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY}`
     );
 
-    const recipe: RecipeProps = {
-        title: res.data.title,
-        image: res.data.image,
-        servings: res.data.servings,
-        readyInMinutes: res.data.readyInMinutes,
-        aggregateLikes: res.data.aggregateLikes,
-        healthScore: res.data.healthScore,
-        analyzedInstructions: res.data.analyzedInstructions,
-        cuisines: res.data.cuisines,
-        diets: res.data.diets,
-        instructions: res.data.instructions,
-        extendedIngredients: res.data.extendedIngredients
-    };
+    try {
+        const recipe: RecipeProps = {
+            title: res.data.title,
+            image: res.data.image,
+            servings: res.data.servings,
+            readyInMinutes: res.data.readyInMinutes,
+            aggregateLikes: res.data.aggregateLikes,
+            healthScore: res.data.healthScore,
+            analyzedInstructions: res.data.analyzedInstructions,
+            cuisines: res.data.cuisines,
+            diets: res.data.diets,
+            instructions: res.data.instructions,
+            extendedIngredients: res.data.extendedIngredients,
+        };
 
-    return {
-        props: {
-            recipe,
-        },
-        revalidate: 1,
-    };
-
-}
+        return {
+            props: {
+                recipe,
+            },
+            revalidate: 1,
+        };
+    } catch (error) {
+        return {
+            notFound: true, // set notFound to true
+        };
+    }
+};
 
 
 const RecipePage = ({ recipe }: RecipePageProps) => {
+    if (!recipe) {
+        return (
+            <div className="flex h-screen justify-center items-center">
+                <Loading></Loading>
+            </div>
+        );
+    }
+
     return (
         <div className="bg-[url('../public/background-4.png')] bg-contain bg-no-repeat">
             <div className="max-w-2xl py-16 mx-auto space-y-12 px-10 md:px-8">
@@ -160,10 +174,8 @@ const RecipePage = ({ recipe }: RecipePageProps) => {
                         )}
                     </div>
                     <div className='mt-12'>
-                        <button className="mx-auto flex justify-center gap-x-2 py-2 px-10 w-full text-sm text-white font-medium bg-teal-400 hover:bg-teal-500 active:bg-teal-600 duration-150 rounded-lg sm:mt-0 sm:w-1/4">
-                            <Link href={{ pathname: "/recipes" }}>
-                                Back </Link>
-                        </button>
+                        <Link className="mx-auto flex justify-center gap-x-2 py-2 px-10 w-full text-sm text-white font-medium bg-teal-400 hover:bg-teal-500 active:bg-teal-600 duration-150 rounded-lg sm:mt-0 sm:w-1/4" href={{ pathname: "/recipes" }}>
+                            Back </Link>
                     </div>
                 </div>
             </div>

@@ -10,8 +10,6 @@ type FormValues = {
     pantry: boolean | null;
 };
 
-
-
 const MultiStepForm = () => {
     const [formValues, setFormValues] = useState<FormValues>({
         dietary: "",
@@ -21,7 +19,6 @@ const MultiStepForm = () => {
 
     //to change the form questions and stepper number
     const [step, setStep] = useState<number>(1);
-    const [transitionState, setTransitionState] = useState<boolean>(false);
     const router = useRouter();
 
 
@@ -67,19 +64,11 @@ const MultiStepForm = () => {
     };
 
     const handleNextClick = () => {
-        setTransitionState(true);
-        setTimeout(() => {
-            setStep(step + 1);
-            setTransitionState(false);
-        }, 500);
+            setStep(step + 1); 
     };
 
     const handlePrevClick = () => {
-        setTransitionState(true);
-        setTimeout(() => {
             setStep(step - 1);
-            setTransitionState(false);
-        }, 500);
     };
 
     return (
@@ -96,7 +85,7 @@ const MultiStepForm = () => {
                 </div>
 
                 <form onSubmit={handleFormSubmit} className="pt-28 pb-20">
-                    <div className={`transition ${transitionState ? 'fade-out' : ''}`}>
+                    <div>
                         {step === 1 && (
                             <div className=" font-semibold text-xl mx-auto">
                                 <label>
@@ -128,7 +117,7 @@ const MultiStepForm = () => {
                             </div>
                         )}
                     </div>
-                    <div className={`transition ${transitionState ? 'fade-out' : ''}`}>
+                    <div>
                         {step === 2 && (
                             <div className=" font-semibold text-xl mx-auto">
                                 <label>
@@ -141,6 +130,7 @@ const MultiStepForm = () => {
                                         name="ingredients"
                                         value={formValues.ingredients}
                                         onChange={handleInputChange}
+                                        spellCheck="true"
                                         required
                                     />
                                 </label>
@@ -152,7 +142,7 @@ const MultiStepForm = () => {
                             </div>
                         )}
                     </div>
-                    <div className={`transition ${transitionState ? 'fade-out' : ''}`}>
+                    <div>
                         {step === 3 && (
                             <div className=" font-semibold text-xl mx-auto form-step">
 
