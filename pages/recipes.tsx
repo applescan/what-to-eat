@@ -117,10 +117,11 @@ export default function Recipes() {
                         ))}
                     </ul>
                 </div>
-                <div className='mx-auto flex justify-center w-1/2'>
-                    <Link className="mx-auto flex justify-center gap-x-2 py-2.5 px-10 w-full text-sm text-white font-medium bg-teal-400 hover:bg-teal-500 active:bg-teal-600 duration-150 rounded-lg sm:mt-0 sm:w-1/4" href={{ pathname: "/get-started" }}>
-                        Back </Link>
-                </div>
+
+            </div>
+            <div className='pt-10'>
+                <Link className="mx-auto flex justify-center gap-x-2 py-2 px-10 w-full text-sm text-white font-medium bg-teal-400 hover:bg-teal-500 active:bg-teal-600 duration-150 rounded-lg sm:mt-0 sm:w-1/4" href={{ pathname: "/get-recipe" }}>
+                    Back </Link>
             </div>
         </div>
     )
