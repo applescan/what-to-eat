@@ -49,6 +49,12 @@ How to run on your own system:
 - Once running, open a browser and open ``http://localhost:3000``
 - If everything was successful, the page will show up.
 
+### Bug / Feature Request
+- If there is a typo in the ingredients form, the result will not show properly, so user have to be very precise when inputting their items.
+- Sometimes spoonacular api includes items that are not part of user's dietary requirements. 
+- In the future, I am planning to include NLP in the ingredients form, so when user typed something that are not precise, the NLP can predict what user mean and fix those inputs.
+- Another future enhancement will be adding a meal planning capabilities and add favorite meals.
+
 ## Author
 
 - Website - https://applescan.github.io/Portfolio-Website/
