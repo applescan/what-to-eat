@@ -1,38 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# What to Eat - A Recipe Recommendation Engine 🌭🥫
+<table>
+<tr>
+<td>
 
-## Getting Started
+<h4>About This Project</h4>
 
-First, run the development server:
+  "What to Eat" - is a recipe recommendation engine that suggests delicious recipes based on your dietary preferences and ingredients on hand, while also helping to reduce food waste. 🍴
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+<h4>Why is this problem valuable to address?</h4>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+If you are like me, meal planning can be a challenge, especially when you have limited ingredients on hand or dietary restrictions to consider. "What to Eat" takes the guesswork out of meal planning and helps you find delicious recipes that fit your unique preferences and needs. 🍽️
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+<h4>Goals</h4>
+By suggesting recipes based on the ingredients you already have at home, you can use up those items before they go bad and minimize the amount of food that gets thrown away. 🌍
+<br></br>
+I hope this project can help people find inspiration and joy in cooking at home. Please give it a try and let me know what you think! 🙌🏼
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+</td>
+</tr>
+</table>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Screenshots
+![](https://github.com/applescan/what-to-eat/blob/main/public/1-horz.jpg)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Demo
+Here is a working live demo :  https://what-to-eat-applescan.vercel.app/
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Built with
+•	Axios
+•	CSS
+•	Canva
+•	Figma
+•	React
+•	Tailwind css
+•	Spoonacular api
+•	Typescript
+•	JavaScript
+•	Next.js
+•	Node.js
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### User Guide
+How to run on your own system:
+- Copy/fork this repository to your github/local drive
+- In the folder, run the command ``npm install``
+- In the folder, run the command ``npm run dev``
+- Once running, open a browser and open ``http://localhost:3000``
+- If everything was successful, the page will show up.
 
-## Deploy on Vercel
+## Author
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Website - https://applescan.github.io/Portfolio-Website/
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## License
+
+MIT © Felicia Fel
+
