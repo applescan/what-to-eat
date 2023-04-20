@@ -40,7 +40,7 @@ export default function Header() {
           </Link>
           <Link
             href={{ pathname: "/get-started" }}
-            className="flex items-center justify-center gap-x-1 py-1 px-4 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg md:inline-flex">
+            className="flex items-center justify-center px-4 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg md:inline-flex">
             Get Recipes
           </Link>
           </div>
