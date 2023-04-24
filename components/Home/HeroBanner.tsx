@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function HeroBanner() {
     return (
-        <div className="bg-green-50 bg-[url('../../public/background.gif')] bg-cover ">
+        <div className="bg-green-50 bg-[url('../public/background.gif')] bg-cover ">
             <section className="relative">
                 <div className="relative z-10 max-w-screen-xl mx-auto px-10 py-28 md:px-8">
                     <div className="space-y-5 max-w-4xl mx-auto text-center">
