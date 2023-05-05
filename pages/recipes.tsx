@@ -48,7 +48,7 @@ export default function Recipes() {
         // Make API call to Spoonacular
         const fetchRecipes = async () => {
             const res = await Axios.get(
-                `https://api.spoonacular.com/recipes/complexSearch?query=${formValues.ingredients}&cuisine=${formValues.dietary}&diet=${formValues.pantry}&apiKey=${process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY}&number=9`
+                `https://api.spoonacular.com/recipes/complexSearch?query=${formValues.ingredients}&diet=${formValues.dietary}&ignorePantry=${formValues.pantry}&apiKey=${process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY}&number=9`
             );
 
 
